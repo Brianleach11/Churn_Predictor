@@ -112,7 +112,7 @@ def explain_prediction(probability, input_dict, surname):
     - If the customer has less than a 40% probability of churning, generate a 3 sentence explanation of why they might not be at risk of churning.
     - Your explanation should be based on the customer's information, the summary statistics of churned and non-churned customers, and the most important features that contribute to churn.
 
-    Don't mention the probability of churning, or the machine learning model, or say anything like "Based on teh machine learning model's prediction and the top 10 most important features", just explain the prediction.
+    Don't mention the probability of churning, or the machine learning model, or say anything like "Based on teh machine learning model's prediction and the top 10 most important features", don't mention the column names, just explain the prediction.
     """
 
     raw_response = client.chat.completions.create(
