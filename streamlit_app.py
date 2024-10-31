@@ -23,7 +23,6 @@ xgb_model = load_model('xgb_model.pkl')
 naive_bayes_model = load_model('nb_model.pkl')
 random_forest_model = load_model('rf_model.pkl')
 decision_tree_model = load_model('dt_model.pkl')
-svm_model = load_model('svm_model.pkl')
 knn_model = load_model('knn_model.pkl')
 voting_classifier_model = load_model('voting_model.pkl')
 
@@ -53,7 +52,6 @@ def make_prediction(input_df, input_dict):
         'Naive Bayes': naive_bayes_model.predict_proba(input_df)[0, 1],
         'Random Forest': random_forest_model.predict_proba(input_df)[0, 1],
         'Decision Tree': decision_tree_model.predict_proba(input_df)[0, 1],
-        'SVM': svm_model.predict_proba(input_df)[0, 1],
         'K-Nearest Neighbors': knn_model.predict_proba(input_df)[0, 1],
         'Voting Classifier': voting_classifier_model.predict_proba(input_df)[0, 1]
     }
