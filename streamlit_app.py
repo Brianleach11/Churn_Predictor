@@ -113,6 +113,7 @@ def explain_prediction(probability, input_dict, surname):
     - Your explanation should be based on the customer's information, the summary statistics of churned and non-churned customers, and the most important features that contribute to churn.
 
     Don't mention the probability of churning, or the machine learning model, or say anything like "Based on teh machine learning model's prediction and the top 10 most important features", don't mention the column names.
+    Don't mention the length of 3 sentences or the 40% margin. If necessary, only mention what is included in the customer's information, and not by key (column name.
     The only output that is necessary is the actual explanation, no need to reiterate, be concise.
     """
 
