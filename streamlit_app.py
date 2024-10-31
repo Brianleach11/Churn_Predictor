@@ -77,45 +77,42 @@ def make_prediction(input_df, input_dict):
 def explain_prediction(probability, input_dict, surname):
     prompt = f"""You are an expert data scientist at a bank, where you specialize in interpreting and explaining predictions of machine learning models.
 
-    Your machine learning model has predicted that a customer with the name {surname} has {round(probability * 100, 1)}% probability of churning, based on the information below.
+A customer with the name {surname} has been assessed as having a {round(probability * 100, 1)}% likelihood of churning based on their profile and engagement. Here is the customer's information:
 
-    Here is the customer's information:
-    {input_dict}
+{input_dict}
 
-    Here are the machine learning model's top 10 most important features that contribute to the churn prediction:
+Here are the machine learning model's top 10 most influential features affecting churn:
 
-    Feature | Importance:
-    -------------------------------
-    NumOfProducts | 0.323888
-    IsActiveMember | 0.164146
-    Age | 0.109550
-    Geography_Germany | 0.091373
-    Balance | 0.052786
-    Geography_France | 0.046463
-    Gender_Female | 0.045283
-    Geography_Spain | 0.036855
-    CreditScore | 0.035005
-    EstimatedSalary | 0.032655
-    HasCrCard | 0.031940
-    Tenure | 0.030054
-    Gender_Male | 0.000000
+Feature | Importance:
+-------------------------------
+NumOfProducts | 0.323888
+IsActiveMember | 0.164146
+Age | 0.109550
+Geography_Germany | 0.091373
+Balance | 0.052786
+Geography_France | 0.046463
+Gender_Female | 0.045283
+Geography_Spain | 0.036855
+CreditScore | 0.035005
+EstimatedSalary | 0.032655
+HasCrCard | 0.031940
+Tenure | 0.030054
+Gender_Male | 0.000000
 
-    {pd.set_option('display.max_columns', None)}
+{pd.set_option('display.max_columns', None)}
 
-    Here are the summary statistics for churned customers:
-    {df[df['Exited'] == 1].describe()}
+Here are the summary statistics for churned customers:
+{df[df['Exited'] == 1].describe()}
 
-    Here are the summary statistics for non-churned customers:
-    {df[df['Exited'] == 0].describe()}
+Here are the summary statistics for non-churned customers:
+{df[df['Exited'] == 0].describe()}
 
-    - If the customer has over a 40% probability of churning, generate a 3 sentence explanation of why they are at risk of churning.
-    - If the customer has less than a 40% probability of churning, generate a 3 sentence explanation of why they might not be at risk of churning.
-    - Your explanation should be based on the customer's information, the summary statistics of churned and non-churned customers, and the most important features that contribute to churn.
+Based on the customer’s probability of churning:
+- If the probability is above 40%, generate a brief 3-sentence explanation outlining why the customer is at risk of churning.
+- If the probability is below 40%, generate a 3-sentence explanation of why the customer may not be at risk of churning.
 
-    Don't mention the probability of churning, or the machine learning model, or say anything like "Based on teh machine learning model's prediction and the top 10 most important features", don't mention the column names.
-    Don't mention the length of 3 sentences or the 40% margin. If necessary, only mention what is included in the customer's information, and not by key (column name.
-    The only output that is necessary is the actual explanation, no need to reiterate, be concise.
-    """
+The output should only be the explanation itself, based on the customer's information, the summary statistics of churned and non-churned customers, and the most influential features, without mentioning probability, model, or feature names. No extra text or summaries are needed.
+"""
 
     raw_response = client.chat.completions.create(
         model="llama-3.2-3b-preview",
@@ -210,4 +207,3 @@ if selected_customer_option:
     st.markdown("---")
     st.subheader("Explanation of the Prediction")
     st.markdown(explanation)
-    st.write("END OF PREDICTION")
