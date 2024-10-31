@@ -48,6 +48,8 @@ def prepare_input_data(credit_score, location, gender, age, tenure, balance, num
     }
 
     input_df = pd.DataFrame([input_dict])
+    input_df['Geography'] = input_df['Geography'].astype('category')
+    input_df['Gender'] = input_df['Gender'].astype('category')
     return input_df, input_dict
 
 def make_prediction(input_df, input_dict):
