@@ -20,7 +20,6 @@ def load_model(file_name):
         return pickle.load(file)
     
 xgb_model = load_model('xgb_model.pkl')
-xgb_resampled_model = load_model('xgb_resampled_model.pkl')
 naive_bayes_model = load_model('nb_model.pkl')
 random_forest_model = load_model('rf_model.pkl')
 decision_tree_model = load_model('dt_model.pkl')
@@ -51,7 +50,6 @@ def prepare_input_data(credit_score, location, gender, age, tenure, balance, num
 def make_prediction(input_df, input_dict):
     probabilities = {
         'XGBoost': xgb_model.predict_proba(input_df)[0, 1],
-        'XGBoost Resampled': xgb_resampled_model.predict_proba(input_df)[0,1],
         'Naive Bayes': naive_bayes_model.predict_proba(input_df)[0, 1],
         'Random Forest': random_forest_model.predict_proba(input_df)[0, 1],
         'Decision Tree': decision_tree_model.predict_proba(input_df)[0, 1],
