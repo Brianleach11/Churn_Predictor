@@ -208,3 +208,4 @@ if selected_customer_option:
     st.markdown("---")
     st.subheader("Explanation of the Prediction")
     st.markdown(explanation)
+    st.write("END OF PREDICTION")
