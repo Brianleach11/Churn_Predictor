@@ -22,7 +22,7 @@ def create_guage_chart(probability):
                     'tickcolor': 'white',
                     },
                 'bar': {'color': color},
-                'bgcolor': 'rbga(0,0,0,0)',
+                'bgcolor': 'rgba(0,0,0,0)',
                 'borderwidth': 2,
                 'bordercolor': 'white',
                 'steps': [
