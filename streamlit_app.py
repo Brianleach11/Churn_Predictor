@@ -27,7 +27,6 @@ decision_tree_model = load_model('dt_model.pkl')
 svm_model = load_model('svm_model.pkl')
 knn_model = load_model('knn_model.pkl')
 voting_classifier_model = load_model('voting_model.pkl')
-xgb_smote_model = load_model('xgb_model_resampled.pkl')
 
 def prepare_input_data(credit_score, location, gender, age, tenure, balance, num_products, has_credit_card, is_active_member, estimated_salary):
     input_dict = {
