@@ -55,8 +55,8 @@ def create_model_probability_chart(probabilities):
     fig = go.Figure(
         data = [
             go.Bar(
-                x=models,
-                y=probs,
+                y=models,
+                x=probs,
                 orientation='h',
                 text=[f'{p:.2f}%' for p in probs],
                 textposition='auto',
